@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<script th:src="@{webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/css/post-trivia.css}">
+	<title>Insert title here</title>
+	</head>
+	<body>
+		
+		<div class="obi">
+			<img th:src="@{/jpg/logo.jpg}">			
+		</div>
+   		<div class="container">
+			<header class="header">				
+				<p class="field">社会</p>
+	 		</header>
+	 		
+	 		<img class="score" th:src="@{/jpg/100.jpg}">
+	 		<hr width="80%">
+			<div th:class="answer">
+				<div th:each = "quiz,iterStat:${quiz}">
+					<a class="btn btn-radius-solid" th:classappend="Q+${iterStat.count}" th:text="Q+${iterStat.count}"><i class="fas fa-angle-right fa-position-right"></i></a>
+					<div class="true" th:if="${quiz.answer == userAnswers[iterStat.count-1]}">正解</div>
+					<div class="false"th:if="${quiz.answer != userAnswers[iterStat.count-1]}">不正解</div>
+					<div th:class="B+${iterStat.count}" th:classappend="C">
+						<div th:text="'問題文:'"></div>
+						<div th:text="${quiz.content}" th:class="awaseru"></div>
+						<div th:text="'解答:'"></div>
+						<div th:text="${quiz.answer}" th:class="awaseru"></div>
+						<div th:text="'解説:'"></div>
+						<div th:text="${quiz.explanation}" th:class="awaseru"></div>
+					</div>
+				</div>
+				
+			</div>
+   		</div>
+    	<script text="text/javascript" th:src="@{/js/post-trivia.js}"></script>
+	</body>
+</html>

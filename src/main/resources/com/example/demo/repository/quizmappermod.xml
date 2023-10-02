@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.prg/dtd/mybatis-3-mapper.dtd">
+	
+<!--Mapping-->
+<mapper namespace="com.example.demo.repository.QuizMapper">
+	<resultMap id="Base" type=""com.example.demo.domain.quiz.QuizDomain""
+	
+	<select id="insertOne" resultType="com.example.demo.domain.quiz.QuizDomain">
+		SELECT * FROM quiz
+	</select>
+</mapper>

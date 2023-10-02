@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+
+	<head>
+		<meta charset="UTF8"></meta>
+		<link rel="stylesheet" th:href="@{/css/trivia.css}">
+	</head>
+	<body>
+		<div class="obi">
+			<img th:src="@{/jpg/logo.jpg}">			
+		</div>
+		<div class="content">
+			<br>
+			<header class="header">				
+				<div class="field">社会</div>
+	 		</header>
+	 		<hr width="80%">
+				<form action="/trivia" method="POST">
+					<UL>
+						<li th:each="quiz,iterationStat:${quiz}" class="quiz-list">
+							<div th:text="'Q'+${iterationStat.count}" class="question"></div>
+							<div th:text="${quiz.content}" class="quizC"></div>
+							<input type="radio"  class="answer-button" th:id="trueRadio+${iterationStat.count}" th:name="userAnswers+${iterationStat.count}" value="○" checked>
+							<label th:for="trueRadio+${iterationStat.count}"  class = "label truelabel quizC" th:name="userAnswers+${iterationStat.count}">
+								<img th:src="@{/jpg/true.jpg}">
+							</label>  
+							<input type="radio"  class="answer-button" th:id="falseRadio+${iterationStat.count}" th:name="userAnswers+${iterationStat.count}" value="×">
+							<label th:for="falseRadio+${iterationStat.count}" class = "label falselabel quizC" th:name="userAnswers+${iterationStat.count}" >
+								<img th:src="@{/jpg/false.jpg}">
+							</label> 
+							<br>
+							<br>
+						</li>
+					</UL>				
+					<input type="submit" value="答え合わせ">
+				</form>
+				<br>
+			</div>
+		</div>
+		
+	</body>
+</html>
